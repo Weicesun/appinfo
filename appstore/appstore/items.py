@@ -16,3 +16,4 @@ class AppstoreItem(scrapy.Item):
     appid = scrapy.Field()
     intro = scrapy.Field()
     recommended = scrapy.Field()
+    turl = scrapy.Field()

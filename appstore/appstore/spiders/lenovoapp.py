@@ -26,6 +26,8 @@ class HuaweiSpider(scrapy.Spider):
         item['appid'] = appid
 	item['intro'] = page.xpath('//meta[@name="description"]/@content').\
         extract_first().encode('utf-8')
+        item['turl'] = page.xpath('//ul[@class="app-info-ul nofloat"]/li[@class="img"]/img[@class="app-ico"]/@lazyload')\
+	.extract_first()
 	divs = page.xpath('//div[@class="open-info"]')
 	recomm = ""
 	for div in divs:
