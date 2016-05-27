@@ -14,7 +14,12 @@ class HuaweiSpider(scrapy.Spider):
 	hrefs = page.xpath('//h4[@class="title"]/a/@href')
 	for href in hrefs:
 	    url = href.extract()
-	    yield scrapy.Request(url, callback=self.parse_item)
+	    yield scrapy.Request(url, self.parse_item, meta = {
+	    	'splash':{
+	    	'endpoint':'render.html',
+	    	'args': {'wait':0.5}
+	    	}
+	    	})
 	    
     def parse_item(self, respose):
 	page = Selector(respose)

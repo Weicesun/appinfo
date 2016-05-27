@@ -17,6 +17,12 @@ NEWSPIDER_MODULE = 'appstore.spiders'
 ITEM_PIPELINES = {
     'appstore.pipelines.AppstorePipeline':300,
 }
+DOWNLOAD_MIDDLEWARES = {
+	'scrapyjs.SplashMiddleware' : 725,
+}
+SPLASH_URL = 'http://localhost:8050'
+DUPEFILTER_CLASS = 'scrapyjs.SplashAwareDupeFilter'
+HTTPCACHE_STORAGE = 'scrapyjs.SplashAwareFSCacheStorage'
 DOWNLOAD_DELAY = 5
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
